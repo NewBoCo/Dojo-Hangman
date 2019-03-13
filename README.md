@@ -3,4 +3,6 @@ Hey team! We've almost got our Hangman game working. There are just a few bugs l
 
 If possible, work in teams of two and select the bug you want to fix. Work on it, and when you have it fixed, check it in to share it with your team members. Don't forget to add a comment when you check it in!
 
+The bugs are listed in the *Issues* tab above.
+
 Note: The only file you should change is *Program.cs* in the *HangmanConsoleGame* project.
