@@ -29,7 +29,7 @@ namespace HangmanConsoleGame
 
                 UpdateScreenWithCurrentGuesses(currentGame);
 
-                CongratulatePlayer();
+                NotifyPlayerOfFinalResults();
 
                 _playing = AskIfPlayerWantsToPlayAgain();
             }
@@ -50,7 +50,7 @@ namespace HangmanConsoleGame
             Console.WriteLine($"Word: {currentGame.MaskedWord}");
         }
 
-        private static void CongratulatePlayer()
+        private static void NotifyPlayerOfFinalResults()
         {
             Console.WriteLine($"CONGRATULATIONS, {_playerName}. You guessed it!");
             Console.ReadKey();
