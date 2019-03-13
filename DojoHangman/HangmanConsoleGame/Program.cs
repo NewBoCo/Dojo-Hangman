@@ -37,7 +37,8 @@ namespace HangmanConsoleGame
 
         private static HangmanGame StartNewGame()
         {
-            return new HangmanGame("Abracadabra");
+            var maxGuesses = 10;
+            return new HangmanGame("Abracadabra", maxGuesses);
         }
 
         private static void UpdateScreenWithCurrentGuesses(HangmanGame currentGame)
