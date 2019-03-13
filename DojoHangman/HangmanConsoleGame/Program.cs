@@ -37,7 +37,7 @@ namespace HangmanConsoleGame
 
         private static HangmanGame StartNewGame()
         {
-            return new HangmanGame(HangmanUtilities.GetRandomWord());
+            return new HangmanGame("Abracadabra");
         }
 
         private static void UpdateScreenWithCurrentGuesses(HangmanGame currentGame)
