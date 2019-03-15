@@ -23,11 +23,19 @@ namespace HangmanLibrary
             get { return _guessedLetters.Count; }
         }
 
+        public int IncorrectGuessCount
+        {
+            get
+            {
+                return _guessedLetters.Except(_word.ToCharArray()).Count();
+            }
+        }
+
         public int GuessesRemaining
         {
             get
             {
-                return MaxGuesses - GuessCount;
+                return MaxGuesses - IncorrectGuessCount;
             }
         }
 

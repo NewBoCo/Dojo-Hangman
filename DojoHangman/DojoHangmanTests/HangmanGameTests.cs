@@ -220,6 +220,60 @@ namespace DojoHangmanTests
         }
 
         [TestMethod]
+        public void IncorrectLetterCount_WithNoLettersGuessed_ReturnsZero()
+        {
+            var newGame = new HangmanGame("Zebra");
+
+            newGame.IncorrectGuessCount.Should().Be(0);
+        }
+
+        [TestMethod]
+        public void IncorrectLetterCount_WithOnlyIncorrectGuesses_ShouldReturnCorrectCount()
+        {
+            var newGame = new HangmanGame("Zebra");
+
+            newGame.MakeGuess('w');
+            newGame.MakeGuess('d');
+
+            newGame.IncorrectGuessCount.Should().Be(2);
+        }
+
+        [TestMethod]
+        public void GuessesRemaining_WithOnlyCorrectGuesses_ShouldBeMaxGuesses()
+        {
+            var newGame = new HangmanGame("Zebra");
+
+            newGame.MakeGuess('z');
+            newGame.MakeGuess('e');
+
+            newGame.GuessesRemaining.Should().Be(newGame.MaxGuesses);
+        }
+
+        [TestMethod]
+        public void GuessesRemaining_WithIncorrectGuesses_ShouldDecrementCorrectly()
+        {
+            var newGame = new HangmanGame("Zebra");
+
+            newGame.MakeGuess('z');
+            newGame.MakeGuess('d');
+            newGame.MakeGuess('y');
+
+            newGame.GuessesRemaining.Should().Be(8);
+        }
+
+        [TestMethod]
+        public void IncorrectLetterCount_WithGoodAndBadGuesses_ShouldReturnCorrectCount()
+        {
+            var newGame = new HangmanGame("Zebra");
+
+            newGame.MakeGuess('z');
+            newGame.MakeGuess('e');
+            newGame.MakeGuess('d');
+
+            newGame.IncorrectGuessCount.Should().Be(1);
+        }
+
+        [TestMethod]
         public void UnguessedLetters_AfterGuessingLetters_ShouldNotContainGuessedLetters()
         {
             var newGame = new HangmanGame("Zebra");
