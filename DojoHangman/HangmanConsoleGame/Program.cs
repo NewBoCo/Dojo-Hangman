@@ -29,7 +29,7 @@ namespace HangmanConsoleGame
 
                 UpdateScreenWithCurrentGuesses(currentGame);
 
-                NotifyPlayerOfFinalResults();
+                NotifyPlayerOfFinalResults(currentGame);
 
                 _playing = AskIfPlayerWantsToPlayAgain();
             }
@@ -38,11 +38,16 @@ namespace HangmanConsoleGame
         private static HangmanGame StartNewGame()
         {
             var maxGuesses = 10;
-            return new HangmanGame("Abracadabra", maxGuesses);
+            var theWord = "Abracadabra";
+            return new HangmanGame(theWord, maxGuesses);
+
+            // HangmanUtilties.GetRandomWord()
+            
         }
 
         private static void UpdateScreenWithCurrentGuesses(HangmanGame currentGame)
         {
+           
             Console.Clear();
             Console.WriteLine($"Unguessed Letters: {currentGame.FormattedUnguessedLetters}");
             Console.WriteLine($"Guesses Remaining: {currentGame.GuessesRemaining}");
@@ -50,7 +55,7 @@ namespace HangmanConsoleGame
             Console.WriteLine($"Word: {currentGame.MaskedWord}");
         }
 
-        private static void NotifyPlayerOfFinalResults()
+        private static void NotifyPlayerOfFinalResults(HangmanGame currentGame)
         {
             Console.WriteLine($"CONGRATULATIONS, {_playerName}. You guessed it!");
             Console.ReadKey();
@@ -64,7 +69,11 @@ namespace HangmanConsoleGame
         private static void MakeAGuess(HangmanGame currentGame)
         {
             var guess = Console.ReadKey().KeyChar;
-            currentGame.MakeGuess(guess);
+            if ( currentGame.HasLetterBeenGuessed(guess) != true)
+            {
+                currentGame.MakeGuess(guess);
+            }
+            
         }
 
         private static string GetPlayerName()
